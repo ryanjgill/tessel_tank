@@ -48,28 +48,31 @@ board.on('ready', function (err) {
   // setup motors 
   var motor1 = new five.Motor({
     pins: {
-      pwm: 3,
-      dir: 5,
-      cdir: 6
-    }
+      pwm: 'A5',
+      dir: 'A6'
+    },
+    invertPWM: true
   })
   , motor2 = new five.Motor({
     pins: {
-      pwm: 9,
-      dir: 10,
-      cdir: 11
-    }
+      pwm: 'B5',
+      dir: 'B6'
+    },
+    invertPWM: true
   });
 
   function forward(_speed) {
     var speed = _speed ? _speed : 255;
 
+    console.log('forward: ' + _speed);
     motor1.forward(speed);
     motor2.forward(speed);
   }
 
   function reverse(_speed) {
     var speed = _speed ? _speed : 255;
+
+    console.log('reverse: ' + _speed);
 
     motor1.reverse(speed);
     motor2.reverse(speed);
@@ -90,6 +93,7 @@ board.on('ready', function (err) {
   }
 
   function stop() {
+    console.log('stop');
     motor1.stop();
     motor2.stop();
   }
