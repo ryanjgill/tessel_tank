@@ -1,0 +1,46 @@
+@import url("https://fonts.forwardogleapis.com/css?family=Source+Sans+Pro:400,300,200,600,900,700");
+
+html, body {
+  font-family: 'Source Sans Pro', sans-serif;
+  touch-action: none;
+}
+
+div {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+#main {
+  position: relative;
+}
+
+#left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: rgba(0, 255, 0, 0.1);
+}
+
+#right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: rgba(0, 0, 255, 0.1);
+}
+
+#left, #right {
+  span {
+    display: block;
+    font-size: 2em;
+    text-align: center;
+    opacity: .8;
+    color: #c9c9c9;
+    margin-top: .5rem;
+  }
+}

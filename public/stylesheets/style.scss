@@ -1,0 +1,178 @@
+@import url("https://fonts.forwardogleapis.com/css?family=Source+Sans+Pro:400,300,200,600,900,700");
+
+html, body {
+  padding: 1rem;
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #F5F5F5;
+  background-color: #000;
+  touch-action: none;
+}
+
+div {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.hide {
+  display: none !important;
+}
+
+#main{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 1 1 auto;
+  }
+
+  #controls {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    #steering > div, #power > div {
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+
+    #left, #reverse {
+      margin-right: 40px;
+    }
+  }
+
+  #power {
+    justify-content: flex-start;
+  }
+}
+
+$forward: #4CAF50;
+$forward-dark: #388E3C;
+
+$reverse: #F44336;
+$reverse-dark: #D32F2F;
+
+$left: #673AB7;
+$left-dark: #512DA8;
+
+$right: #3F51B5;
+$right-dark: #303F9F;
+
+.btn-small {
+  width: 186px;
+  height: 100px;
+
+  line-height: 100px;
+  display: inline-block;
+  margin: 20px 40px 0 0;
+  text-align: center;
+
+  -moz-transition: all 150ms ease;
+  -o-transition: all 150ms ease;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+}
+
+.btn-big {
+  border-radius: 6px;
+  color: #FFF;
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 200;
+  height: 200px;
+  //letter-spacing: -1px;
+  line-height: 200px;
+  //margin: 30px 0 10px;
+  position: relative;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+  text-decoration: none !important;
+  top: 0;
+  width: 186px;
+  -moz-transition: all 150ms ease;
+  -o-transition: all 150ms ease;
+  -webkit-transition: all 150ms ease;
+  transition: all 150ms ease;
+}
+
+.btn-big-forward {
+  background-color: $forward;
+  box-shadow: 0 0 0 1px $forward inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 $forward-dark, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.btn-big-forward:hover, .btn-big-forward:focus {
+  background-color: $forward-dark;
+  box-shadow: 0 0 0 1px $forward inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 10px 0 0 $forward-dark, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
+  top: -2px;
+}
+.btn-big-forward:active {
+  box-shadow: 0 0 0 1px $forward-dark inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.btn-big-reverse, .btn-small {
+  background-color: $reverse;
+  box-shadow: 0 0 0 1px $reverse inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 $reverse-dark, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.btn-big-reverse:hover, .btn-big-reverse:focus, .btn-small:hover, .btn-small:focus {
+  background-color: $reverse-dark;
+  box-shadow: 0 0 0 1px $reverse inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 10px 0 0 $reverse-dark, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
+  top: -2px;
+}
+.btn-big-reverse:active, .btn-small:active {
+  box-shadow: 0 0 0 1px $reverse-dark inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.btn-big-left {
+  background-color: $left;
+  box-shadow: 0 0 0 1px $left inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 $left-dark, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.btn-big-left:hover, .btn-big-left:focus {
+  background-color: $left-dark;
+  box-shadow: 0 0 0 1px $left inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 10px 0 0 $left-dark, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
+  top: -2px;
+}
+.btn-big-left:active {
+  box-shadow: 0 0 0 1px $left-dark inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.btn-big-right {
+  background-color: $right;
+  box-shadow: 0 0 0 1px $right inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 8px 0 0 $right-dark, 0 8px 0 1px rgba(0, 0, 0, 0.4), 0 8px 8px 1px rgba(0, 0, 0, 0.5);
+}
+.btn-big-right:hover, .btn-big-right:focus {
+  background-color: $right-dark;
+  box-shadow: 0 0 0 1px $right inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 10px 0 0 $right-dark, 0 10px 0 1px rgba(0, 0, 0, 0.4), 0 10px 8px 1px rgba(0, 0, 0, 0.6);
+  top: -2px;
+}
+.btn-big-right:active {
+  box-shadow: 0 0 0 1px $right-dark inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset, 0 0 0 1px rgba(0, 0, 0, 0.4);
+  -moz-transform: translateY(10px);
+  -ms-transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
