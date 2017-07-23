@@ -1,8 +1,6 @@
 window.onload = function () {
   socket = io();
 
-  //socket.emit('forward');
-
   let joystickL = nipplejs.create({
     zone: document.getElementById('left'),
     mode: 'static',
@@ -30,7 +28,7 @@ window.onload = function () {
     document.getElementById('rightMotor').innerHTML = 'stop()';
   });
 
-  joystickL.on('move', function (joystick, data) {
+  joystickL.on('move', _.throttle(function (joystick, data) {
     if (!data.hasOwnProperty('direction')) { return; }
     let direction = data.direction.y === 'up'
       ? 'forward'
@@ -41,18 +39,17 @@ window.onload = function () {
 
     socket.emit('leftMotor', {direction, force});
     document.getElementById('leftMotor').innerHTML = `${direction}(${force})`;
-  });
+  }, 75, {}));
 
-  joystickR.on('move', function (joystick, data) {
+  joystickR.on('move', _.throttle(function (joystick, data) {
     if (!data.hasOwnProperty('direction')) { return; }
     let direction = data.direction.y === 'up'
       ? 'forward'
       : 'reverse';
     let force = data.force * 255;
-  
+    
     force = force > 255 ? 255 : force.toFixed(0);
-
-    socket.emit('rightMotor', {direction, force});
+    
     document.getElementById('rightMotor').innerHTML = `${direction}(${force})`;
-  });
+  }, 75, {}));
 };
