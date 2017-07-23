@@ -32,7 +32,6 @@ app.get('/controller', function (req, res, next) {
 // board ready event
 board.on('ready', function (err) {
   if (err) {
-    console.log(err);
     board.reset();
     return;
   }
@@ -63,17 +62,12 @@ board.on('ready', function (err) {
 
   function forward(_speed) {
     var speed = _speed ? _speed : 255;
-
-    console.log('forward: ' + _speed);
     motor1.forward(speed);
     motor2.forward(speed);
   }
 
   function reverse(_speed) {
     var speed = _speed ? _speed : 255;
-
-    console.log('reverse: ' + _speed);
-
     motor1.reverse(speed);
     motor2.reverse(speed);
   }
@@ -93,7 +87,6 @@ board.on('ready', function (err) {
   }
 
   function stop() {
-    console.log('stop');
     motor1.stop();
     motor2.stop();
   }
@@ -115,20 +108,16 @@ board.on('ready', function (err) {
     // nipplejs variable input events
     socket.on('leftMotor', function (input) {
       if (input.direction === 'forward') {
-        console.log('motor1:forward(' + input.force + ')');
         motor1.forward(input.force);
       } else {
-        console.log('motor1:reverse(' + input.force + ')');
         motor1.reverse(input.force);
       }
     });
 
     socket.on('rightMotor', function (input) {
       if (input.direction === 'forward') {
-        console.log('motor2:forward(' + input.force + ')');
         motor2.forward(input.force);
       } else {
-        console.log('motor2:reverse(' + input.force + ')');
         motor2.reverse(input.force);
       }
     });
@@ -137,10 +126,8 @@ board.on('ready', function (err) {
       if (!motor) {
         stop();
       } else if (motor === 'leftMotor') {
-        console.log('motor1:stop');
         motor1.stop();
       } else {
-        console.log('motor2:stop');
         motor2.stop();
       }
     });
