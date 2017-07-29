@@ -15,7 +15,8 @@ window.onload = function () {
     mode: 'static',
     position: { left: '50%', top: '50%' },
     color: 'red',
-    size: 200
+    size: 200,
+    name: 'RIGHT'
   });
 
   joystickL.on('end', function (joystick, data) {
@@ -39,7 +40,7 @@ window.onload = function () {
 
     socket.emit('leftMotor', {direction, force});
     document.getElementById('leftMotor').innerHTML = `${direction}(${force})`;
-  }, 75, {}));
+  }, 75, { 'trailing': false }));
 
   joystickR.on('move', _.throttle(function (joystick, data) {
     if (!data.hasOwnProperty('direction')) { return; }
@@ -49,7 +50,7 @@ window.onload = function () {
     let force = data.force * 255;
     
     force = force > 255 ? 255 : force.toFixed(0);
-    
+    socket.emit('rightMotor', {direction, force});
     document.getElementById('rightMotor').innerHTML = `${direction}(${force})`;
-  }, 75, {}));
+  }, 75, { 'trailing': false }));
 };

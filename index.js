@@ -107,6 +107,8 @@ board.on('ready', function (err) {
 
     // nipplejs variable input events
     socket.on('leftMotor', function (input) {
+      console.log('leftMotor: ' + input.force);
+
       if (input.direction === 'forward') {
         motor1.forward(input.force);
       } else {
@@ -115,6 +117,8 @@ board.on('ready', function (err) {
     });
 
     socket.on('rightMotor', function (input) {
+      console.log('rightMotor: ' + input.force);
+
       if (input.direction === 'forward') {
         motor2.forward(input.force);
       } else {
@@ -123,6 +127,7 @@ board.on('ready', function (err) {
     });
 
     socket.on('stop', function (motor) {
+      console.log('STOP!');
       if (!motor) {
         stop();
       } else if (motor === 'leftMotor') {
