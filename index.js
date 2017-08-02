@@ -1,12 +1,11 @@
 var express = require('express')
   , app = express()
   , path = require('path')
-  , os = require('os')
   , http = require('http').Server(app)
   , socketIO = require('socket.io')(http)
   , five = require('johnny-five')
   , tessel = require('tessel-io')
-  , address = os.networkInterfaces()['wlan0'][0].address
+  , ip = require('ip')
   , PORT = 3000
   , board = new five.Board({
       io: new tessel()
@@ -147,7 +146,7 @@ board.on('ready', function (err) {
   http.listen(PORT);
 
   // log the address and port
-  console.log('Up and running on ' + address + ':' + PORT);
+  console.log('Up and running on ' + ip.address() + ':' + PORT);
 });
 
 
