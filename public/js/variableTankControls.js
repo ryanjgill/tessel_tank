@@ -34,7 +34,7 @@ window.onload = function () {
     let direction = data.direction.y === 'up'
       ? 'forward'
       : 'reverse';
-    let force = data.force * 255;
+    let force = data.force * 255 / 2;
   
     force = force > 255 ? 255 : force.toFixed(0);
 
@@ -47,7 +47,7 @@ window.onload = function () {
     let direction = data.direction.y === 'up'
       ? 'forward'
       : 'reverse';
-    let force = data.force * 255;
+    let force = data.force * 255 / 2;
     
     force = force > 255 ? 255 : force.toFixed(0);
     socket.emit('rightMotor', {direction, force});
