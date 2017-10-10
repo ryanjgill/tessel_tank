@@ -61,28 +61,34 @@ board.on('ready', function (err) {
 
   function forward(_speed) {
     var speed = _speed ? _speed : 255;
-    motor1.forward(speed);
+    
+    // motor 1 is reversed
+    motor1.reverse(speed);
     motor2.forward(speed);
   }
 
   function reverse(_speed) {
     var speed = _speed ? _speed : 255;
-    motor1.reverse(speed);
+
+    // motor 1 is reversed
+    motor1.forward(speed);
     motor2.reverse(speed);
   }
 
   function spinLeft(_speed) {
     var speed = _speed ? _speed : 255 * .8;
 
+    // motor 1 is reversed
     motor1.forward(speed);
-    motor2.reverse(speed);
+    motor2.forward(speed);
   }
 
   function spinRight(_speed) {
     var speed = _speed ? _speed : 255 * .8;
 
+    // motor 1 is reversed
     motor1.reverse(speed);
-    motor2.forward(speed);
+    motor2.reverse(speed);
   }
 
   function stop() {
@@ -108,10 +114,12 @@ board.on('ready', function (err) {
     socket.on('leftMotor', function (input) {
       //console.log('leftMotor: ' + input.force);
 
+
+      // INVERTED DIRECTIONS FOR THIS MOTOR
       if (input.direction === 'forward') {
-        motor1.forward(input.force);
-      } else {
         motor1.reverse(input.force);
+      } else {
+        motor1.forward(input.force);
       }
     });
 
